@@ -4,3 +4,4 @@ export type Todo = {
 };
 
 export type ToggleTodo = (selectTodo: Todo) => void;
+export type AddTodo = (newTodo: String) => void;

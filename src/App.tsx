@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./App.scss";
 import TodoList from "./components/TodoList";
-import { Todo, ToggleTodo } from "./Interface/todo";
+import AddTodoForm from "./components/AddTodoForm";
+import { Todo, ToggleTodo, AddTodo } from "./Interface/todo";
 
 const initialTodo: Array<Todo> = [
   { text: "Researh", complete: true },
@@ -23,10 +24,21 @@ const App: React.FC = () => {
     });
     setTodos(updateTodo);
   };
+
+  const addNewTodo: AddTodo = newTodo => {
+    setTodos([
+      ...todos,
+      {
+        text: newTodo,
+        complete: false
+      }
+    ]);
+  };
   return (
     <div>
       <div style={{ flexDirection: "column" }} className="alwaysCenterScreen">
         <h1>Todo React TypeScript</h1>
+        <AddTodoForm addNewTodo={addNewTodo} />
         {todos.map(todo => (
           <TodoList todo={todo} toggleTodo={toggleTodo} />
         ))}
