@@ -4,25 +4,25 @@ import TodoList from "./components/TodoList";
 import { Todo, ToggleTodo } from "./Interface/todo";
 
 const initialTodo: Array<Todo> = [
-  { id: 1, text: "Researh", complete: true },
-  { id: 2, text: "Hacking", complete: true }
+  { text: "Researh", complete: true },
+  { text: "Hacking", complete: true }
 ];
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState(initialTodo)
+  const [todos, setTodos] = useState(initialTodo);
 
-  const toggleTodo: ToggleTodo = (selectTodo) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === selectTodo.id) {
+  const toggleTodo: ToggleTodo = selectTodo => {
+    const updateTodo = todos.map(todo => {
+      if (todo === selectTodo) {
         return {
           ...todo,
           complete: !todo.complete
-        }
+        };
       }
-    })
-    setTodos(newTodos)
-  }
-
+      return todo;
+    });
+    setTodos(updateTodo);
+  };
   return (
     <div>
       <div style={{ flexDirection: "column" }} className="alwaysCenterScreen">

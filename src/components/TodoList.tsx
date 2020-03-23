@@ -6,12 +6,16 @@ interface TodoListItems {
   toggleTodo: ToggleTodo;
 }
 
-const TodoList: React.FC<TodoListItems> = ({ todo }) => {
+const TodoList: React.FC<TodoListItems> = ({ todo, toggleTodo }) => {
   return (
     <>
-      <ul>
+      <ul style={{ listStyleType: "none" }}>
         <li>
-          <input type="checkbox" checked={todo.complete} />
+          <input
+            type="checkbox"
+            checked={todo.complete}
+            onChange={() => toggleTodo(todo)}
+          />
           <label
             style={{ textDecoration: todo.complete ? "line-through" : "none" }}
           >
