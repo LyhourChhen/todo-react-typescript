@@ -1,7 +1,9 @@
 import React from "react";
-import { Todo } from "../Interface/todo";
+import { Todo, ToggleTodo } from "../Interface/todo";
+
 interface TodoListItems {
   todo: Todo;
+  toggleTodo: ToggleTodo;
 }
 
 const TodoList: React.FC<TodoListItems> = ({ todo }) => {
